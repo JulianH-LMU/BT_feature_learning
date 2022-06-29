@@ -116,7 +116,7 @@ class MetricContainer:
         self.metrics = Metric.get_metrics_by_names(self.metric_names)
         self.names = [self.prefix + name for name in self.metric_names]
 
-    def __call__(self, y_true, y_pred):
+    def __call__(self, y_true, y_pred, **kwargs):
         """Compute all metrics and store into a dict.
 
         Parameters
@@ -136,10 +136,10 @@ class MetricContainer:
         for metric in self.metrics:
             if isinstance(y_pred, list):
                 res = np.mean(
-                    [metric(y_true[:, i], y_pred[i]) for i in range(len(y_pred))]
+                    [metric(y_true[:, i], y_pred[i], **kwargs) for i in range(len(y_pred))]
                 )
             else:
-                res = metric(y_true, y_pred)
+                res = metric(y_true, y_pred, **kwargs)
             logs[self.prefix + metric._name] = res
         return logs
 

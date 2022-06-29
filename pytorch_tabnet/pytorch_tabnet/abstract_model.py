@@ -117,6 +117,7 @@ class TabModel(BaseEstimator):
         callbacks=None,
         pin_memory=True,
         from_unsupervised=None,
+        **kwargs,
     ):
         """Train a neural network stored in self.network
         Using train_dataloader for training data and
@@ -175,8 +176,6 @@ class TabModel(BaseEstimator):
 
         eval_set = eval_set if eval_set else []
 
-        print("Hi Fitter!")
-        
         if loss_fn is None:
             self.loss_fn = self._default_loss
         else:
@@ -226,7 +225,7 @@ class TabModel(BaseEstimator):
 
             # Apply predict epoch to all eval sets
             for eval_name, valid_dataloader in zip(eval_names, valid_dataloaders):
-                self._predict_epoch(eval_name, valid_dataloader)
+                self._predict_epoch(eval_name, valid_dataloader, **kwargs)
 
             # Call method on_epoch_end for all callbacks
             self._callback_container.on_epoch_end(
@@ -484,7 +483,7 @@ class TabModel(BaseEstimator):
 
         return batch_logs
 
-    def _predict_epoch(self, name, loader):
+    def _predict_epoch(self, name, loader, **kwargs):
         """
         Predict an epoch and update metrics.
 
@@ -509,7 +508,7 @@ class TabModel(BaseEstimator):
 
         y_true, scores = self.stack_batches(list_y_true, list_y_score)
 
-        metrics_logs = self._metric_container_dict[name](y_true, scores)
+        metrics_logs = self._metric_container_dict[name](y_true, scores, **kwargs)
         self.network.train()
         self.history.epoch_metrics.update(metrics_logs)
         return
