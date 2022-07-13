@@ -1,0 +1,23 @@
+[general]
+experiment_name = ""
+missing_percent = [ 0.0, 0.15, 0.1,]
+missing_value_mask = -1
+random_seed = 5200295890113863819
+
+[toy_data]
+n_features = 3
+n_samples = [ 50, 100, 50,]
+centers = [ [ 1, 5, 1,], [ 7, 12, 9,], [ 10, 2, 5,],]
+cluster_std = 1.5
+
+[DBSCAN]
+eps = 3
+min_samples = 5
+
+[RQ2]
+pred_features = 1
+runs = 1
+
+[model_param]
+max_epochs = 300
+patience = 50
