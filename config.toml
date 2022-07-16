@@ -25,6 +25,12 @@ runs = 1
 #optimizer_params = {'lr': 0.02}
 #mask_type = "entmax"
 
+[training]
+test_size = 0.25
+
 [model_param]
 max_epochs = 300
 patience = 50
+
+[plots]
+dpi = 300
