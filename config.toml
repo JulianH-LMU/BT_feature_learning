@@ -1,10 +1,10 @@
 [general]
-experiment_name = "100_runs_max-epochs_rmse"
-experiment_variable = "max_epochs"
-missing_percent = [0.0, 0.15, 0.1]
+experiment_name = "wine_100runs_learning-rate_3mv-features_custom-loss"
+experiment_variable = "optimizer_params"
+missing_percent = [0.0, 0.15, 0.0, 0.0, 0.2, 0.0, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 missing_value_mask = -1
-random_seed = 1141386077
-use_toy_data = true
+random_seed = false
+use_toy_data = false
 
 [toy_data]
 n_features = 3
@@ -13,27 +13,28 @@ centers = [[1, 5, 1], [7, 12, 9], [10, 2, 5]]
 cluster_std = 1.5
 
 [DBSCAN]
-eps = 3
-min_samples = 5
+eps = ""
+min_samples = ""
 
 [RQ2]
 pred_features = 1
 runs = 100
 
-#[regressor_param]
+[regressor_param]
 #optimizer_fn = torch.optim.Adam
 #scheduler_fn = torch.optim.lr_scheduler.StepLR
 #scheduler_params = {'step_size': 2, 'gamma': 0.9}
-#optimizer_params = {'lr': 0.02}
+optimizer_params = [0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1.0]
 #mask_type = "entmax"
 
 [training]
 train_val_split = 0.75
+cl_weights = [0.5, 1.0, 0.0001] # Explanation: [RMSE, KLDiv, Cluster-Mean-Loss]
 
 [model_param]
-max_epochs = [100, 150, 200, 250, 300, 350, 400]
+max_epochs = 250
 patience = 50
-eval_metric = ["rmse"]
+eval_metric = ["custom_loss"]
 
 [plots]
 dpi = 300
