@@ -1,16 +1,13 @@
 [general]
-experiment_name = "wine_100runs_learning-rate_3mv-features_custom-loss"
-experiment_variable = "optimizer_params"
-missing_percent = [0.0, 0.15, 0.0, 0.0, 0.2, 0.0, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-missing_value_mask = -1
-random_seed = false
-use_toy_data = false
+experiment_name = ""
+experiment_variable = "train_val_split"
+missing_percent = [0.0, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+missing_value_mask = -1000
+random_seed = 123456
+runs = 100
 
-[toy_data]
-n_features = 3
-n_samples = [50, 100, 50]
-centers = [[1, 5, 1], [7, 12, 9], [10, 2, 5]]
-cluster_std = 1.5
+[outlier_definition]
+quantiles = [0.1, 0.9]
 
 [DBSCAN]
 eps = ""
@@ -18,18 +15,17 @@ min_samples = ""
 
 [RQ2]
 pred_features = 1
-runs = 100
 
 [regressor_param]
 #optimizer_fn = torch.optim.Adam
 #scheduler_fn = torch.optim.lr_scheduler.StepLR
-#scheduler_params = {'step_size': 2, 'gamma': 0.9}
-optimizer_params = [0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1.0]
+#scheduler_params = {'step_size': 0.2, 'gamma': 0.9}
 #mask_type = "entmax"
+optimizer_params = [0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1.0] 		# only used for varying learning rates!
 
 [training]
-train_val_split = 0.75
-cl_weights = [0.5, 1.0, 0.0001] # Explanation: [RMSE, KLDiv, Cluster-Mean-Loss]
+train_val_split = [0.5, 0.6, 0.7, 0.8, 0.9]
+cl_weights = [1,1,0] 							# Explanation: [RMSE, KLDiv, Cluster-Mean-Loss]
 
 [model_param]
 max_epochs = 250
