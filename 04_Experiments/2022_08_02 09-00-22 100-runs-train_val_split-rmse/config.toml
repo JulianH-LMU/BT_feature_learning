@@ -1,0 +1,32 @@
+[general]
+experiment_name = ""
+experiment_variable = "train_val_split"
+missing_percent = [ 0.0, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,]
+missing_value_mask = -1000
+random_seed = 123456
+runs = 100
+
+[outlier_definition]
+quantiles = [ 0.1, 0.9,]
+
+[DBSCAN]
+eps = 2
+min_samples = 26
+
+[RQ2]
+pred_features = 1
+
+[regressor_param]
+optimizer_params = [ 0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1.0,]
+
+[training]
+train_val_split = [ 0.5, 0.6, 0.7, 0.8, 0.9,]
+cl_weights = [ 1, 1, 0,]
+
+[model_param]
+max_epochs = 250
+patience = 50
+eval_metric = [ "rmse",]
+
+[plots]
+dpi = 300

@@ -4,7 +4,7 @@ experiment_variable = "train_val_split"
 missing_percent = [0.0, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 missing_value_mask = -1000
 random_seed = 123456
-runs = 100
+runs = 5
 
 [outlier_definition]
 quantiles = [0.1, 0.9]
@@ -30,7 +30,7 @@ cl_weights = [1,1,0] 							# Explanation: [RMSE, KLDiv, Cluster-Mean-Loss]
 [model_param]
 max_epochs = 250
 patience = 50
-eval_metric = ["custom_loss"]
+eval_metric = ["rmse"]
 
 [plots]
 dpi = 300
