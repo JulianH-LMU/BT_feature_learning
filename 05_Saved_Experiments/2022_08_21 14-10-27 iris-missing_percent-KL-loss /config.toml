@@ -1,0 +1,38 @@
+[general]
+dataset = "iris"
+experiment_name = "iris-missing_percent-KL-loss"
+experiment_variable = "missing_percent"
+missing_percent = 0.25
+missing_outliers = 0.2
+missing_value_features = 0
+missing_value_mask = -1000
+random_seed = 2575950809
+seed_train_test_split = [ 3241460139, 848758912, 840457112, 1150544405, 3982222277,]
+models = 5
+runs = 10
+
+[outlier_definition]
+st_deviations = 1.5
+min_outliers_per_direction = 0.05
+min_outliers_total = 0.15
+
+[DBSCAN]
+eps = 1
+min_samples = 8
+
+[RQ2]
+pred_features = 1
+
+[regressor_param]
+
+[training]
+train_val_split = 0.75
+cl_weights = [ 0, 1, 0,]
+
+[model_param]
+max_epochs = 250
+patience = 50
+eval_metric = [ "custom_loss",]
+
+[plots]
+dpi = 300

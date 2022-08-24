@@ -12,7 +12,7 @@
 - toml
 
 ## TabNet Customization
-- to install the custom TabNet implementation navigate to the feature_learning/03_pytorch_tabnet directory and use "python setup.py install"
+- to install the custom TabNet implementation navigate to the feature_learning/pytorch_tabnet directory and use "python setup.py install"
 
 ## Experiments Setup
 - to setup an experiment, use the config.toml
