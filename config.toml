@@ -1,10 +1,10 @@
 [general]
 dataset = "drybean"							# currently implemented: "iris", "wine", "drybean"
 experiment_name = ""
-experiment_variable = "missing_percent"
-missing_percent = [0.05, 0.1, 0.15, 0.2, 0.25]				# share of missing values generated
+experiment_variable = "missing_value_features"
+missing_percent = 0.15							# share of missing values generated
 missing_outliers = 0.2							# share of missing values, that were outliers in the original distribution
-missing_value_features = 0						# number of additional features that will have missing values generated
+missing_value_features = [0.1, 0.2, 0.3, 0.4, 0.5]			# share of additional features that will have missing values generated
 missing_value_mask = -1000
 random_seed = 2575950809
 seed_train_test_split = [3241460139, 848758912, 840457112, 1150544405, 3982222277]
