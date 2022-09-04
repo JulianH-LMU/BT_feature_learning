@@ -1,13 +1,13 @@
 [general]
 dataset = "wine"							# currently implemented: "iris", "wine", "drybean"
 experiment_name = ""
-experiment_variable = "missing_value_features"
-missing_percent = 0.15							# share of missing values generated
+experiment_variable = "missing_percent"
+missing_percent = [0.2, 0.3, 0.4, 0.5]					# share of missing values generated
 missing_outliers = 0.2							# share of missing values, that were outliers in the original distribution
-missing_value_features = [0.1, 0.2, 0.3, 0.4, 0.5]			# share of additional features that will have missing values generated
+missing_value_features = 0						# share of additional features that will have missing values generated
 missing_value_mask = -1000
-random_seed = 2575950809
-seed_train_test_split = [3241460139, 848758912, 840457112, 1150544405, 3982222277]
+random_seed = false
+seed_train_test_split = false
 models = 5								# number of models trained, median of the models predictions will be used
 runs = 10								# number of randomly created missing-value datasets to do predictions on
 
@@ -21,7 +21,7 @@ eps = ""
 min_samples = ""
 
 [RQ2]
-pred_features = 1
+n_omitted_features = 0							# features omitted in %
 
 [regressor_param]
 # config in jupyter notebook
@@ -33,7 +33,7 @@ cl_weights = [1,1,0] 							# Explanation: [RMSE, KLDiv, Cluster-Mean-Loss]
 [model_param]
 max_epochs = 250
 patience = 50
-eval_metric = ["mae"]
+eval_metric = ["custom_loss"]
 
 [plots]
 dpi = 300
