@@ -1,6 +1,6 @@
 # feature_learning
 
-## Requirements
+## Required libraries
 - pandas
 - numpy
 - matplotlib
@@ -13,6 +13,9 @@
 
 ## TabNet Customization
 - to install the custom TabNet implementation navigate to the feature_learning/pytorch_tabnet directory and use "python setup.py install"
+
+## Code
+- The relevant code to run experiments is in the jupyter notebook "TabNet_feature_leanring_1.0.ipynb"
 
 ## Experiments Setup
 - to setup an experiment, use the config.toml
